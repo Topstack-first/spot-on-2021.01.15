@@ -1,0 +1,18 @@
+Web content is presented in plain text widgets.
+For fancy displays, please consider WebEngine or
+WebKit.
+
+Qt 5.x (< 5.6)
+
+DEFINES += SPOTON_WEBENGINE_ENABLED
+QT += webenginewidgets
+
+DEFINES += SPOTON_WEBKIT_ENABLED
+QT += webkit webkitwidgets
+
+Qt 5.x (>= 5.6)
+
+Windows may require a Microsoft compiler.
+
+DEFINES += SPOTON_WEBENGINE_ENABLED
+QT += webenginewidgets

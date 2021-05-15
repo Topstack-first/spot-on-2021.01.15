@@ -1,0 +1,36 @@
+\Preparing /usr/local/goldbug:
+
+sudo mkdir -p /usr/local/goldbug/Documentation
+sudo mkdir -p /usr/local/goldbug/Lib
+sudo mkdir -p /usr/local/goldbug/SQL
+sudo mkdir -p /usr/local/goldbug/Sounds
+sudo mkdir -p /usr/local/goldbug/Translations
+cd ~/spot-on.d/branches/trunk
+qmake -o Makefile goldbug.pro && make -j 4
+sudo cp -p ../../libNTL/unix.d/src/.libs/libntl.so* /usr/local/goldbug/Lib/.
+sudo cp -p ../../libNTRU/libntru.so /usr/local/goldbug/Lib/.
+sudo cp -p ../../libSpotOn/libspoton.so /usr/local/goldbug/Lib/.
+sudo cp -p ./Data/spot-on-neighbors.txt /usr/local/goldbug/.
+sudo cp -p ./Icons/Logo/goldbug.png /usr/local/goldbug/.
+sudo cp -p ./SQL/* /usr/local/goldbug/SQL/.
+sudo cp -p ./Shell/spot-on-kernel.sh /usr/local/goldbug/.
+sudo cp -p ./Shell/goldbug.sh /usr/local/goldbug/.
+sudo cp -p ./Sounds/* /usr/local/goldbug/Sounds/.
+sudo cp -p ./GoldBug /usr/local/goldbug/.
+sudo cp -p ./Spot-On-Kernel /usr/local/goldbug/.
+sudo cp -p ./Translations/*.qm /usr/local/goldbug/Translations/.
+sudo cp -pr ./Documentation/* /usr/local/goldbug/Documentation/.
+sudo chmod -x /usr/local/goldbug/Lib/lib*
+sudo chown -Rh root:staff /usr/local/goldbug
+sudo find /usr/local/goldbug -type f -exec chmod g+w {} \;
+sudo rm /usr/local/spot-on/Documentation/*.qrc
+
+Preparing GoldBug-x_amd64.deb:
+
+cd
+mkdir -p goldbug-debian/usr/local
+mkdir -p goldbug-debian/usr/share/applications
+cp -p ./spot-on.d/branches/trunk/goldbug.desktop goldbug-debian/usr/share/applications/.
+cp -pr ./spot-on.d/branches/trunk/DEBIAN-GoldBug goldbug-debian/DEBIAN
+cp -r /usr/local/goldbug goldbug-debian/usr/local/.
+fakeroot dpkg-deb --build goldbug-debian GoldBug-2021.01.15_amd64.deb

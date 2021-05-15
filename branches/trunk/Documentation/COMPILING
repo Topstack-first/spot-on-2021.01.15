@@ -1,0 +1,41 @@
+Qt 5.5.1 or newer is required.
+
+Please read spot-on-download-dependencies.bash for hints
+regarding other libraries.
+
+ARM
+
+qmake -o Makefile spot-on.arm.pro
+make
+
+FreeBSD
+
+qmake -o Makefile spot-on.freebsd.pro
+make
+
+Linux
+
+qmake -o Makefile spot-on.pro
+make
+
+OS X
+
+Homebrew is required for OS X.
+
+qmake -o Makefile spot-on.osx.pro
+sudo make install
+
+OpenBSD
+
+qmake -o Makefile spot-on.openbsd.pro
+gmake
+
+PowerPC
+
+qmake -o Makefile spot-on.powerpc.pro
+make
+
+Windows
+
+qmake -o Makefile spot-on.win.pro
+mingw32-make
